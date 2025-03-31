@@ -6,68 +6,138 @@
 }
 
 :root {
-    /* Black & Red Theme Colors */
-    --bg-color: #0a0a0a;          /* Very dark grey / almost black */
-    --surface-color: #1a1a1a;     /* Slightly lighter dark grey for cards/sections */
-    --primary-color: #ff3333;     /* Vibrant Red */
-    --secondary-color: #b30000;   /* Darker Red */
-    --text-primary: #f0f0f0;      /* Light grey for main text */
-    --text-secondary: #cccccc;    /* Lighter grey for secondary text */
-    --border-color: #444444;      /* Dark grey border color */
-    --hover-glow: rgba(255, 51, 51, 0.15); /* Red glow on hover */
-    --shadow-color: rgba(0, 0, 0, 0.4); /* Darker shadow */
+    /* Dark Theme (Default) */
+    --bg-color: #0D1117; /* GitHub Dark Dimmed BG */
+    --surface-color: #161B22; /* GitHub Dark Dimmed Surface */
+    --primary-color: #E55353; /* Softer Red */
+    --secondary-color: #C83C3C; /* Darker Softer Red */
+    --text-primary: #c9d1d9; /* GitHub Dark Dimmed Primary Text */
+    --text-secondary: #8b949e; /* GitHub Dark Dimmed Secondary Text */
+    --border-color: #30363d; /* GitHub Dark Dimmed Border */
+    --header-bg: rgba(13, 17, 23, 0.88); /* Slightly more opaque */
+    --hover-glow: rgba(229, 83, 83, 0.12); /* Adjusted glow */
+    --shadow-color: rgba(0, 0, 0, 0.2); /* Softer shadow */
+    --logo-filter: none; /* Assume most logos work well */
+    --logo-filter-invert: invert(100%) hue-rotate(180deg) brightness(1.5); /* For specific dark logos needing light version */
+    --btn-text-color: #ffffff;
+    --icon-color: var(--text-secondary);
+    --icon-hover-color: var(--primary-color);
 
-    /* Fonts */
+    /* Light Theme Variables */
+    --light-bg-color: #ffffff;
+    --light-surface-color: #f6f8fa; /* GitHub Light Surface */
+    --light-primary-color: #D73A3A; /* Adjusted red for light bg */
+    --light-secondary-color: #B02A2A;
+    --light-text-primary: #24292f; /* GitHub Light Primary Text */
+    --light-text-secondary: #57606a; /* GitHub Light Secondary Text */
+    --light-border-color: #d0d7de; /* GitHub Light Border */
+    --light-header-bg: rgba(246, 248, 250, 0.92);
+    --light-hover-glow: rgba(215, 58, 58, 0.1);
+    --light-shadow-color: rgba(140, 149, 159, 0.12); /* Softer shadow */
+    --light-logo-filter: none;
+    --light-logo-filter-invert: none;
+    --light-btn-text-color: #ffffff;
+    --light-icon-color: var(--light-text-secondary);
+    --light-icon-hover-color: var(--light-primary-color);
+
+    /* Fonts & Transitions */
     --font-family: 'Poppins', sans-serif;
-
-    /* Transitions */
-    --transition-speed: 0.3s;
-    --animation-speed: 0.6s; /* For scroll animations */
+    --border-radius-small: 4px;
+    --border-radius-medium: 6px; /* Slightly less rounded */
+    --border-radius-large: 10px;
+    --transition-speed: 0.25s; /* Slightly faster transitions */
+    --animation-speed: 0.5s; /* Faster animation */
 }
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    scroll-padding-top: 80px; /* Match header height + buffer */
 }
 
 body {
     font-family: var(--font-family);
     background-color: var(--bg-color);
     color: var(--text-primary);
-    line-height: 1.6;
-    font-size: 16px;
-    overflow-x: hidden; /* Prevent horizontal scrollbar caused by animations */
+    line-height: 1.7; /* Improved readability */
+    font-size: 16px; /* Standard base */
+    font-weight: 400; /* Regular weight */
+    overflow-x: hidden;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
-/* No scroll class for when mobile menu is open */
+body.light-theme {
+    --bg-color: var(--light-bg-color);
+    --surface-color: var(--light-surface-color);
+    --primary-color: var(--light-primary-color);
+    --secondary-color: var(--light-secondary-color);
+    --text-primary: var(--light-text-primary);
+    --text-secondary: var(--light-text-secondary);
+    --border-color: var(--light-border-color);
+    --header-bg: var(--light-header-bg);
+    --hover-glow: var(--light-hover-glow);
+    --shadow-color: var(--light-shadow-color);
+    --logo-filter: var(--light-logo-filter);
+    --logo-filter-invert: var(--light-logo-filter-invert);
+    --btn-text-color: var(--light-btn-text-color);
+    --icon-color: var(--light-icon-color);
+    --icon-hover-color: var(--light-icon-hover-color);
+}
+
 body.no-scroll {
     overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
     color: var(--text-primary);
-    margin-bottom: 0.8em;
+    margin-bottom: 0.7em;
     font-weight: 600;
-    line-height: 1.2;
+    line-height: 1.3;
+    transition: color var(--transition-speed) ease;
 }
 
-h1 { font-size: 2.8rem; }
-h2 { font-size: 2.2rem; }
-h3 { font-size: 1.5rem; }
+h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* Slightly smaller H1 */
+h2 {
+    font-size: 2.2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.4em;
+    margin-bottom: 1.2em;
+    transition: border-color var(--transition-speed) ease;
+}
+
+h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+/* Use primary color for H3 */
 
 p {
-    margin-bottom: 1em;
+    margin-bottom: 1.2em;
     color: var(--text-secondary);
+    transition: color var(--transition-speed) ease;
 }
+
+p:last-child {
+    margin-bottom: 0;
+}
+
 
 a {
     color: var(--primary-color);
     text-decoration: none;
-    transition: color var(--transition-speed) ease;
+    transition: color var(--transition-speed) ease, opacity var(--transition-speed) ease;
 }
 
 a:hover, a:focus {
     color: var(--secondary-color);
+    opacity: 0.9; /* Slightly less opacity change */
 }
 
 img {
@@ -82,71 +152,112 @@ ul {
 
 /* --- Utility Classes --- */
 .container {
-    max-width: 1100px;
+    max-width: 1100px; /* Standard width */
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 20px; /* Standard padding */
 }
 
 .content-section {
-    padding: 80px 0;
-    overflow: hidden; /* Contain animations within section bounds */
+    padding: 80px 0; /* Reduced vertical space */
+    overflow: hidden;
+    transition: background-color var(--transition-speed) ease;
 }
 
 .alt-bg {
     background-color: var(--surface-color);
+    /* Optional subtle gradient */
+    /* background-image: linear-gradient(rgba(255, 255, 255, 0.01), transparent); */
 }
 
 /* --- Header & Navigation --- */
 header {
-    background-color: rgba(10, 10, 10, 0.85); /* Darker transparent background */
-    backdrop-filter: blur(10px);
+    background-color: var(--header-bg);
+    backdrop-filter: blur(10px); /* Slightly less blur */
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px var(--shadow-color);
-    transition: background-color var(--transition-speed) ease;
+    border-bottom: 1px solid var(--border-color); /* Subtle border */
+    transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
 }
 
 header nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
+    height: 70px; /* Standard height */
 }
 
 header .logo {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-primary);
+    transition: color var(--transition-speed) ease;
+    letter-spacing: -0.5px;
 }
+
 header .logo:hover {
     color: var(--primary-color);
 }
 
-/* Burger Menu */
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.theme-toggle-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 1.5rem; /* Slightly smaller */
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--transition-speed) ease;
+    order: 1;
+}
+
+.theme-toggle-btn:hover {
+    color: var(--primary-color);
+}
+
+.theme-toggle-btn .icon-sun, .theme-toggle-btn .icon-moon {
+    display: none;
+}
+
+body.light-theme .theme-toggle-btn .icon-sun {
+    display: inline;
+}
+
+body:not(.light-theme) .theme-toggle-btn .icon-moon {
+    display: inline;
+}
+
 .burger-menu {
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    width: 30px;
-    height: 21px;
+    width: 26px;
+    height: 19px;
     cursor: pointer;
     z-index: 1001;
+    order: 2;
 }
 
 .burger-menu .bar {
     width: 100%;
-    height: 3px;
+    height: 2.5px;
     background-color: var(--text-primary);
-    border-radius: 2px;
-    transition: all var(--transition-speed) ease;
+    border-radius: var(--border-radius-small);
+    transition: all var(--transition-speed) ease, background-color var(--transition-speed) ease;
 }
 
-/* Active burger menu styles */
 .burger-menu.active .bar:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
+    transform: translateY(8.25px) rotate(45deg);
 }
 
 .burger-menu.active .bar:nth-child(2) {
@@ -154,146 +265,185 @@ header .logo:hover {
 }
 
 .burger-menu.active .bar:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
+    transform: translateY(-8.25px) rotate(-45deg);
 }
 
-/* Nav links */
 .nav-links {
     display: flex;
 }
 
 .nav-links li {
-    margin-left: 25px;
+    margin-left: 28px;
 }
 
+/* Standard spacing */
 .nav-links li a {
     color: var(--text-secondary);
     font-weight: 400;
-    padding: 5px 0;
+    padding: 8px 4px;
     position: relative;
+    transition: color var(--transition-speed) ease;
 }
 
-.nav-links li a::after {
+.nav-links li a::after { /* Underline effect */
     content: '';
     position: absolute;
-    bottom: -2px;
+    bottom: 0px;
     left: 0;
     width: 0;
     height: 2px;
     background-color: var(--primary-color);
-    transition: width var(--transition-speed) ease;
+    transition: width var(--transition-speed) ease, background-color var(--transition-speed) ease;
 }
 
-.nav-links li a:hover,
-.nav-links li a.active {
+.nav-links li a:hover, .nav-links li a.active {
     color: var(--text-primary);
 }
 
-.nav-links li a:hover::after,
-.nav-links li a.active::after {
+.nav-links li a:hover::after, .nav-links li a.active::after {
     width: 100%;
 }
 
-
-
 /* --- Hero Section --- */
 .hero-section {
-    min-height: 100vh;
+    /* min-height: 100vh; REMOVED */
+    padding: 180px 0 100px 0; /* Adjusted padding for height control */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: 70px;
-    /* Red overlay instead of just dark */
-    background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 1)), url('https://via.placeholder.com/1920x1080/111/000?text=Optional+BG') center center/cover no-repeat; /* ★★★ Optional: Add a background image URL ★★★ */
+    /* padding-top: 70px; /* Match header - Handled by top padding */
+    background: linear-gradient(rgba(13, 17, 23, 0.85), rgba(13, 17, 23, 0.98)), url('https://i.imgur.com/2zYfzOE.jpeg') center center/cover no-repeat fixed;
     position: relative;
     overflow: hidden;
 }
 
 .hero-content h1 {
     color: #ffffff;
-    margin-bottom: 0.3em;
-}
-.hero-content p {
-    font-size: 1.2rem;
-    color: var(--text-secondary);
-    max-width: 600px;
-    margin: 0 auto 1.5em auto;
-}
-.hero-content .profile-pic {
-    width: 150px; height: 150px;
-    border-radius: 50%; margin: 20px auto;
-    border: 4px solid var(--primary-color);
-    object-fit: cover;
+    margin-bottom: 0.4em;
+    font-size: 3.2rem; /* Adjusted Hero H1 */
 }
 
-/* --- Scroll Down Indicator --- */
-.scroll-down-indicator {
-    position: absolute; bottom: 30px; left: 50%;
-    transform: translateX(-50%);
-    animation: bounce 2s infinite ease-in-out;
+.hero-content p {
+    font-size: 1.2rem; /* Adjusted Hero P */
+    color: var(--text-secondary);
+    max-width: 600px; /* Slightly narrower */
+    margin: 0 auto 2em auto;
+    font-weight: 400;
 }
-.scroll-down-indicator span {
-    display: block; width: 20px; height: 35px;
-    border: 2px solid var(--text-secondary); border-radius: 50px; position: relative;
+
+.hero-buttons {
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
 }
-.scroll-down-indicator span::before {
-    content: ''; position: absolute; top: 8px; left: 50%;
-    transform: translateX(-50%); width: 4px; height: 8px;
-    background: var(--text-secondary); border-radius: 2px;
-    animation: scroll 2s infinite ease-in-out;
-}
-@keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-10px); } 60% { transform: translateX(-50%) translateY(-5px); } }
-@keyframes scroll { 0% { opacity: 1; top: 8px; } 100% { opacity: 0; top: 18px; } }
+
+/* --- Scroll Down Indicator REMOVED --- */
 
 /* --- Buttons --- */
 .btn {
-    display: inline-block; padding: 12px 28px;
-    background-color: var(--primary-color); color: #ffffff; /* White text on red */
-    border-radius: 5px; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 0.5px; border: 2px solid var(--primary-color);
-    transition: all var(--transition-speed) ease; cursor: pointer; margin: 5px;
+    display: inline-block;
+    padding: 12px 28px; /* Adjusted padding */
+    border-radius: var(--border-radius-medium);
+    font-weight: 500;
+    font-size: 0.9rem; /* Adjusted size */
+    text-transform: none;
+    letter-spacing: 0.3px;
+    border: 2px solid transparent;
+    transition: all var(--transition-speed) ease;
+    cursor: pointer;
+    margin: 5px;
+    text-align: center;
 }
-.btn:hover, .btn:focus {
-    background-color: var(--secondary-color); /* Darker red on hover */
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--btn-text-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: var(--secondary-color);
     border-color: var(--secondary-color);
-    color: #ffffff;
-    box-shadow: 0 0 15px var(--hover-glow);
+    color: var(--btn-text-color);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 12px var(--hover-glow); /* Softer glow */
 }
-.btn-secondary { /* Make secondary distinct, maybe outline? */
+
+.btn-secondary {
     background-color: transparent;
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
 }
+
 .btn-secondary:hover, .btn-secondary:focus {
-    background-color: var(--primary-color);
-    color: #ffffff;
-    box-shadow: 0 0 15px var(--hover-glow);
+    background-color: var(--hover-glow);
+    color: var(--primary-color);
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
 }
+
 .btn-outline {
     background-color: transparent;
-    border: 2px solid var(--text-secondary); color: var(--text-secondary);
+    border: 1px solid var(--border-color); /* Thinner outline */
+    color: var(--text-secondary);
+    padding: 13px 28px; /* Adjust padding for border change */
 }
+
 .btn-outline:hover, .btn-outline:focus {
     border-color: var(--primary-color);
     color: var(--primary-color);
     background-color: var(--hover-glow);
-    box-shadow: none;
+    transform: translateY(-2px);
+}
+
+/* --- About Section --- */
+#about h2 {
+    text-align: left;
+    border: none;
+    padding-bottom: 0;
+}
+
+/* Reset heading style */
+
+.about-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px; /* Standard gap */
+}
+
+.about-image {
+    flex: 0 0 250px; /* Slightly smaller fixed width */
+    text-align: center;
+}
+
+.about-image img {
+    border-radius: 50%;
+    border: 4px solid var(--surface-color); /* Thinner border */
+    box-shadow: 0 6px 20px var(--shadow-color); /* Softer shadow */
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    transition: border-color var(--transition-speed) ease;
+}
+
+.about-text {
+    flex: 1;
 }
 
 /* --- Skills Section --- */
 #skills h2 {
     text-align: center;
-    margin-bottom: 50px;
 }
 
 .skills-grid {
     display: grid;
-    /* Adjust minmax for desired icon size + padding */
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 30px;
-    justify-items: center; /* Center items within grid cells */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjusted item size */
+    gap: 30px; /* Standard gap */
+    justify-items: center;
 }
 
 .skill-item {
@@ -301,158 +451,384 @@ header .logo:hover {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 15px;
-    background-color: var(--bg-color); /* Slightly darker background for contrast */
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    padding: 20px; /* Adjusted padding */
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius-medium);
+    border: 1px solid var(--border-color); /* Default border */
+    transition: transform var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background-color var(--transition-speed) ease;
 }
 
 .skill-item:hover {
-    transform: translateY(-5px) scale(1.03);
+    transform: translateY(-5px) scale(1.03); /* Slightly less movement */
     border-color: var(--primary-color);
-    box-shadow: 0 5px 15px var(--shadow-color), 0 0 10px var(--hover-glow);
+    box-shadow: 0 5px 15px var(--shadow-color), 0 0 10px var(--hover-glow); /* Softer glow */
+    background-color: var(--surface-color);
 }
 
 .skill-item img {
-    height: 60px; /* Adjust icon size */
-    width: 60px; /* Ensure square aspect ratio for consistency */
-    object-fit: contain; /* Scale image nicely */
-    margin-bottom: 15px;
+    height: 50px; /* Standard logo size */
+    width: 50px;
+    object-fit: contain;
+    margin-bottom: 18px; /* Adjusted margin */
+    transition: filter var(--transition-speed) ease, transform 0.2s ease;
 }
+
+.skill-item:hover img {
+    transform: scale(1.08); /* Slightly less scale */
+}
+
+
+/* Specific logo adjustments */
+.logo-pytorch {
+    filter: var(--logo-filter-invert);
+}
+
+body.light-theme .logo-pytorch {
+    filter: none;
+}
+
+/* Django logo needs inversion in light theme if using dark source */
+body.light-theme .logo-django {
+    filter: invert(1);
+}
+
 
 .skill-item p {
-    margin-bottom: 0; /* Remove default paragraph margin */
-    font-size: 0.9rem;
+    margin-bottom: 0;
+    font-size: 0.85rem; /* Adjusted size */
     font-weight: 500;
-    color: var(--text-secondary);
+    color: var(--text-primary);
+    transition: color var(--transition-speed) ease;
 }
-
 
 /* --- Projects Section --- */
 #projects {
-    background-color: var(--bg-color); /* Switch background */
+    background-color: var(--bg-color);
 }
+
 #projects h2 {
     text-align: center;
-    margin-bottom: 50px;
 }
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Adjusted card size */
+    gap: 35px; /* Standard gap */
 }
 
 .project-card {
-    background-color: var(--surface-color); /* Use surface color for cards */
-    border-radius: 8px; overflow: hidden;
-    box-shadow: 0 4px 15px var(--shadow-color);
-    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-    display: flex; flex-direction: column;
-    border: 1px solid transparent; /* Add border for hover effect */
+    background-color: var(--surface-color);
+    border-radius: var(--border-radius-large);
+    overflow: hidden;
+    box-shadow: 0 4px 15px var(--shadow-color); /* Softer shadow */
+    transition: transform var(--transition-speed) ease-out, box-shadow var(--transition-speed) ease-out, background-color var(--transition-speed) ease, border-color var(--transition-speed) ease-out;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px var(--shadow-color), 0 0 20px var(--hover-glow);
-    border-color: var(--primary-color); /* Highlight border on hover */
+    transform: translateY(-6px); /* Slightly less movement */
+    box-shadow: 0 10px 30px var(--shadow-color), 0 0 15px var(--hover-glow); /* Adjusted hover shadow */
+    border-color: var(--primary-color);
 }
 
 .project-card img {
-    width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
     border-bottom: 1px solid var(--border-color);
-    filter: grayscale(50%); /* Slightly desaturate image */
-    transition: filter var(--transition-speed) ease;
+    filter: brightness(95%) saturate(85%); /* Less subdued image */
+    transition: filter 0.4s ease, border-color 0.4s ease, transform 0.4s ease; /* Smoother transition */
 }
+
 .project-card:hover img {
-    filter: grayscale(0%); /* Full color on hover */
+    filter: brightness(100%) saturate(100%);
+    transform: scale(1.02); /* Slightly less scale */
 }
 
 .project-info {
-    padding: 25px; flex-grow: 1; display: flex; flex-direction: column;
+    padding: 25px; /* Standard padding */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
+
 .project-info h3 {
-    color: var(--primary-color); /* Red project titles */
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    line-height: 1.4;
 }
-.project-info p { flex-grow: 1; margin-bottom: 20px; }
-.project-links { margin-top: auto; display: flex; flex-wrap: wrap; gap: 10px; }
+
+.project-info p {
+    flex-grow: 1;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.project-links {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.project-links .btn {
+    padding: 9px 18px; /* Smaller buttons in cards */
+    font-size: 0.8rem;
+}
+
 
 /* --- Contact Section --- */
-#contact h2 { text-align: center; margin-bottom: 30px;}
-#contact { text-align: center; }
-#contact p { max-width: 600px; margin-left: auto; margin-right: auto; margin-bottom: 30px; }
-.social-links { margin-top: 30px; }
-.social-links a {
-    margin: 0 15px; color: var(--text-secondary); font-size: 1.5rem; /* Make icons larger */
-    display: inline-block; /* Needed for transform */
-    transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
+#contact h2 {
+    text-align: center;
+    margin-bottom: 25px;
 }
+
+#contact {
+    text-align: center;
+}
+
+.contact-content p {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 35px;
+}
+
+.contact-buttons {
+    margin-bottom: 35px;
+}
+
+.social-links {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Standard space */
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    color: var(--icon-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem; /* Adjusted size */
+    font-weight: 500;
+    transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    padding: 5px;
+}
+
 .social-links a:hover {
-    color: var(--primary-color);
-    transform: scale(1.2) translateY(-2px); /* Icon hover effect */
+    color: var(--icon-hover-color);
+    transform: translateY(-3px);
+    opacity: 1;
+}
+
+.social-icon {
+    width: 22px; /* Standard icon size */
+    height: 22px;
 }
 
 /* --- Footer --- */
 footer {
-    background-color: var(--bg-color); /* Match main bg */
-    padding: 30px 0; text-align: center;
-    margin-top: 80px; border-top: 1px solid var(--border-color);
+    background-color: var(--surface-color);
+    padding: 35px 0;
+    text-align: center;
+    margin-top: 80px; /* Reduced margin */
+    border-top: 1px solid var(--border-color);
+    transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
 }
-footer p { margin-bottom: 0; color: var(--text-secondary); font-size: 0.9rem; }
+
+footer p {
+    margin-bottom: 0;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    transition: color var(--transition-speed) ease;
+}
 
 /* --- Animations --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-/* Initial load hero animation */
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-.animate-fade-in-up { opacity: 0; animation: fadeInUp 0.8s ease-out forwards; }
-.delay-1 { animation-delay: 0.2s; }
-.delay-2 { animation-delay: 0.4s; }
-.delay-3 { animation-delay: 0.6s; }
+.animate-fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Slightly faster */
+.delay-1 {
+    animation-delay: 0.1s;
+}
+
+/* Adjusted delays */
+.delay-2 {
+    animation-delay: 0.2s;
+}
+
+.delay-3 {
+    animation-delay: 0.3s;
+}
 
 /* Scroll-triggered animations */
 .animate-on-scroll {
     opacity: 0;
-    transform: translateY(40px); /* Start slightly lower */
-    transition: opacity var(--animation-speed) ease-out, transform var(--animation-speed) ease-out;
+    transform: translateY(40px); /* Slightly less distance */
+    transition: opacity var(--animation-speed) cubic-bezier(0.165, 0.84, 0.44, 1), transform var(--animation-speed) cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* Add stagger effect using transition-delay */
-.animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
-.animate-on-scroll:nth-child(3) { transition-delay: 0.2s; }
-.animate-on-scroll:nth-child(4) { transition-delay: 0.3s; }
-.animate-on-scroll:nth-child(5) { transition-delay: 0.4s; }
-.animate-on-scroll:nth-child(6) { transition-delay: 0.5s; }
-/* Add more if you have many items in a grid */
+/* Stagger effect (simplified) */
+.skills-grid .animate-on-scroll,
+.project-grid .animate-on-scroll {
+    transition-delay: calc(0.08s * var(--stagger-index, 1)); /* Default to 1 if not set */
+}
+
+/* Assign stagger index inline or via JS if needed, or keep simple delays */
+.skills-grid .animate-on-scroll:nth-child(1),
+.project-grid .animate-on-scroll:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.skills-grid .animate-on-scroll:nth-child(2),
+.project-grid .animate-on-scroll:nth-child(2) {
+    transition-delay: 0.08s;
+}
+
+.skills-grid .animate-on-scroll:nth-child(3),
+.project-grid .animate-on-scroll:nth-child(3) {
+    transition-delay: 0.16s;
+}
+
+.skills-grid .animate-on-scroll:nth-child(4) {
+    transition-delay: 0.24s;
+}
+
+.skills-grid .animate-on-scroll:nth-child(5) {
+    transition-delay: 0.32s;
+}
+
+.skills-grid .animate-on-scroll:nth-child(6) {
+    transition-delay: 0.40s;
+}
+
+.skills-grid .animate-on-scroll:nth-child(7) {
+    transition-delay: 0.48s;
+}
+
+.skills-grid .animate-on-scroll:nth-child(8) {
+    transition-delay: 0.56s;
+}
+
 
 .animate-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-
 /* --- Responsive Design --- */
 
 @media (max-width: 992px) {
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 2rem; }
-    .container { max-width: 90%; }
-    .skills-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 20px; }
-    .skill-item img { height: 50px; width: 50px; }
+    body {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 2.6rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .container {
+        max-width: 90%;
+        padding: 0 20px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(105px, 1fr));
+        gap: 20px;
+    }
+
+    .skill-item img {
+        height: 45px;
+        width: 45px;
+    }
+
+    .project-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+    }
+
+    .about-container {
+        gap: 30px;
+    }
+
+    .about-image {
+        flex-basis: 200px;
+    }
+
+    .hero-section {
+        padding: 150px 0 80px 0;
+    }
+
+    /* Adjust hero padding */
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
 }
 
 @media (max-width: 768px) {
-    body { font-size: 15px; }
-    h1 { font-size: 2.2rem; }
-    h2 { font-size: 1.8rem; }
-    h3 { font-size: 1.3rem; }
-    .content-section { padding: 60px 0; }
+    h1 {
+        font-size: 2.2rem;
+    }
 
-    /* Mobile menu styles */
-    header nav {
-        height: 70px;
-        padding: 0 20px;
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    .content-section {
+        padding: 70px 0;
+    }
+
+    html {
+        scroll-padding-top: 70px;
+    }
+
+    /* Match header */
+    .hero-section {
+        padding: 120px 0 70px 0;
+        background-attachment: scroll;
+    }
+
+    /* Remove fixed BG */
+    .hero-content h1 {
+        font-size: 2.4rem;
+    }
+
+    .hero-content p {
+        font-size: 1.05rem;
+    }
+
+    /* Mobile Menu adjustments */
+    .nav-controls {
+        display: flex;
     }
 
     .burger-menu {
@@ -464,15 +840,15 @@ footer p { margin-bottom: 0; color: var(--text-secondary); font-size: 0.9rem; }
         top: 0;
         right: -100%;
         width: 80%;
-        max-width: 300px;
+        max-width: 300px; /* Slightly narrower */
         height: 100vh;
         background-color: var(--surface-color);
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 50px 0;
-        transition: right var(--transition-speed) ease;
-        box-shadow: -5px 0 15px var(--shadow-color);
+        padding: 60px 0;
+        transition: right var(--transition-speed) ease-in-out, background-color var(--transition-speed) ease;
+        box-shadow: -5px 0 15px var(--shadow-color); /* Softer shadow */
         z-index: 1000;
     }
 
@@ -487,35 +863,63 @@ footer p { margin-bottom: 0; color: var(--text-secondary); font-size: 0.9rem; }
 
     .nav-links li a {
         font-size: 1.2rem;
+        color: var(--text-primary);
+        font-weight: 500;
     }
 
     .nav-links li a::after {
         display: none;
     }
 
-    /* Mobile scroll adjustments */
-    html { scroll-padding-top: 70px; }
-    .hero-section { padding-top: 70px; }
+    /* About Section Mobile */
+    .about-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 
-    /* Other mobile adjustments */
-    .project-grid { grid-template-columns: 1fr; gap: 25px; }
-    .project-info { padding: 20px; }
-    .project-links .btn { padding: 10px 20px; }
-    .skills-grid { grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 15px;}
-    .skill-item { padding: 10px; }
+    #about h2 {
+        text-align: center;
+        margin-top: 1.5em;
+    }
 
-    /* Add overlay when menu is open */
+    .about-image {
+        flex-basis: auto;
+        width: 180px; /* Adjust size */
+        margin-bottom: 25px;
+    }
+
+    /* Other Mobile */
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .project-info {
+        padding: 20px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+        gap: 18px;
+    }
+
+    .skill-item {
+        padding: 18px;
+    }
+
+    /* Mobile Menu Overlay */
     .menu-overlay {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.65); /* Slightly darker */
         z-index: 999;
         opacity: 0;
         visibility: hidden;
-        transition: opacity var(--transition-speed) ease;
+        transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
     }
 
     .menu-overlay.active {
@@ -525,12 +929,368 @@ footer p { margin-bottom: 0; color: var(--text-secondary); font-size: 0.9rem; }
 }
 
 @media (max-width: 576px) {
-    h1 { font-size: 1.8rem; }
-    .hero-content p { font-size: 1rem; }
-    .btn { padding: 10px 20px; font-size: 0.9rem; }
-    .project-grid { gap: 20px; }
-    .skills-grid { grid-template-columns: repeat(3, 1fr); /* Force 3 columns on smallest screens */ gap: 15px;}
-    .skill-item img { height: 40px; width: 40px; margin-bottom: 10px;}
-    .skill-item p { font-size: 0.8rem; }
-    .social-links a { margin: 0 10px; font-size: 1.3rem; }
+    body {
+        font-size: 15px;
+    }
+
+    h1 {
+        font-size: 1.9rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    .hero-section {
+        padding: 100px 0 60px 0;
+    }
+
+    .hero-content h1 {
+        font-size: 2.1rem;
+    }
+
+    .hero-content p {
+        font-size: 0.95rem;
+    }
+
+    .hero-buttons .btn {
+        padding: 11px 22px;
+        font-size: 0.85rem;
+        width: calc(50% - 8px);
+    }
+
+    .hero-buttons {
+        gap: 8px;
+    }
+
+    .btn {
+        padding: 11px 20px;
+        font-size: 0.85rem;
+    }
+
+    .project-grid {
+        gap: 20px;
+    }
+
+    .project-info {
+        padding: 18px;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    .skill-item img {
+        height: 38px;
+        width: 38px;
+        margin-bottom: 12px;
+    }
+
+    .skill-item p {
+        font-size: 0.75rem;
+    }
+
+    .social-links a {
+        font-size: 0.8rem;
+        gap: 5px;
+    }
+
+    .social-icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .social-links {
+        gap: 12px;
+    }
+
+    .theme-toggle-btn {
+        font-size: 1.3rem;
+    }
+
+    .nav-controls {
+        gap: 10px;
+    }
+
+    .about-image {
+        width: 150px;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+}
+
+
+
+/* --- Enhanced Work Experience & Education Sections --- */
+
+#experience, #education {
+    position: relative; /* Needed for the timeline pseudo-element if placed on section */
+}
+
+#experience h2, #education h2 {
+    text-align: center;
+    margin-bottom: 3em; /* More space before the items start */
+}
+
+/* Container for the items - adjust margin for timeline */
+#experience .container > div:not(h2), /* Target direct div children except h2 */
+#education .container > div:not(h2) {
+    position: relative; /* Needed for child absolute positioning */
+    /* Add some space if timeline elements go outside item padding */
+    /* margin-left: 30px; */
+}
+
+
+.experience-item, .education-item {
+    position: relative; /* Crucial for the timeline pseudo-elements */
+    background-color: var(--surface-color); /* Card background */
+    border-radius: var(--border-radius-medium);
+    padding: 25px 30px; /* Standard padding */
+    margin-bottom: 2.5em; /* Space between items */
+    margin-left: 40px; /* Make space for the timeline elements */
+    border-left: 3px solid var(--primary-color); /* Accent border */
+    box-shadow: 0 3px 8px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color var(--transition-speed) ease;
+    /* Inherit animation properties */
+    opacity: 0; /* Start hidden for animation */
+    transform: translateY(30px); /* Start lower for animation */
+}
+
+/* Apply opposite background for items in alt-bg sections */
+.alt-bg .experience-item,
+.alt-bg .education-item {
+    background-color: var(--bg-color);
+}
+
+
+/* Timeline Line - Vertical Connector */
+.experience-item::before, .education-item::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: calc(100% + 2.5em); /* Extend line to the next item's top */
+    background-color: var(--border-color);
+    left: -21px; /* Position left of the item, aligned with the dot */
+    top: 15px; /* Start below the dot */
+    z-index: -1; /* Place behind the dot */
+    transition: background-color var(--transition-speed) ease;
+}
+
+/* Remove line extension from the very last item in each section */
+#experience .experience-item:last-of-type::before,
+#education .education-item:last-of-type::before {
+    height: calc(100% - 15px); /* Stop line at the bottom of the item */
+}
+
+/* Timeline Dot */
+.experience-item::after, .education-item::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: 3px solid var(--surface-color); /* Creates a "pop" effect */
+    left: -27px; /* Center the dot on the line position */
+    top: 8px; /* Align vertically with the heading */
+    z-index: 1; /* Place above the line */
+    transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease, transform 0.3s ease;
+    transform: scale(0); /* Start scaled down for animation */
+}
+
+/* Adjust dot border color based on section background */
+.alt-bg .experience-item::after,
+.alt-bg .education-item::after {
+     border-color: var(--bg-color); /* Match the item background */
+}
+
+
+/* Item Hover Effects */
+.experience-item:hover, .education-item:hover {
+    transform: translateY(-5px) scale(1.01); /* Lift and slightly enlarge */
+    box-shadow: 0 8px 20px var(--shadow-color);
+    border-left-color: var(--secondary-color); /* Darken accent border */
+}
+
+.experience-item:hover::after, .education-item:hover::after {
+    transform: scale(1.15); /* Slightly enlarge dot on hover */
+}
+
+/* Headings and Meta inside items */
+.experience-item h3, .education-item h3 {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.3em;
+    transition: color var(--transition-speed) ease;
+}
+
+.item-meta {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.2em; /* More space before details */
+    font-style: italic;
+    transition: color var(--transition-speed) ease;
+}
+
+.item-meta strong {
+    font-weight: 600; /* Bolder company/uni name */
+    color: var(--text-primary);
+    font-style: normal;
+    transition: color var(--transition-speed) ease;
+}
+
+/* Bullet points */
+.experience-item ul {
+    list-style: none; /* Remove default bullets */
+    padding-left: 5px;
+}
+
+.experience-item ul li {
+    position: relative;
+    margin-bottom: 0.7em;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    padding-left: 18px; /* Space for custom bullet */
+    transition: color var(--transition-speed) ease;
+    /* Animation setup for list items */
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease, color var(--transition-speed) ease;
+}
+
+/* Custom Bullet */
+.experience-item ul li::before {
+    content: '•'; /* Use a standard bullet character */
+    position: absolute;
+    left: 0;
+    top: 1px; /* Adjust vertical alignment */
+    color: var(--primary-color); /* Use accent color */
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color var(--transition-speed) ease;
+}
+
+.education-item p:not(.item-meta) {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color var(--transition-speed) ease;
+}
+
+/* --- Animations for Experience & Education --- */
+
+/* Apply the base animation class if not already applied in HTML */
+/* .experience-item, .education-item {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+} */
+
+/* When item becomes visible */
+.experience-item.is-visible, .education-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animate the timeline dot scaling up */
+.experience-item.is-visible::after, .education-item.is-visible::after {
+    transform: scale(1);
+    transition-delay: 0.2s; /* Delay dot animation slightly */
+}
+
+/* Animate the list items fading/sliding in */
+.experience-item.is-visible ul li {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Staggering animation delays for items */
+#experience .experience-item:nth-child(1),
+#education .education-item:nth-child(1) { transition-delay: 0.1s; }
+#experience .experience-item:nth-child(2) { transition-delay: 0.2s; }
+#experience .experience-item:nth-child(3) { transition-delay: 0.3s; }
+#experience .experience-item:nth-child(4) { transition-delay: 0.4s; }
+/* Add more if needed */
+
+/* Staggering animation delays for list items within a visible card */
+.experience-item.is-visible ul li:nth-child(1) { transition-delay: 0.3s; }
+.experience-item.is-visible ul li:nth-child(2) { transition-delay: 0.35s; }
+.experience-item.is-visible ul li:nth-child(3) { transition-delay: 0.4s; }
+.experience-item.is-visible ul li:nth-child(4) { transition-delay: 0.45s; }
+.experience-item.is-visible ul li:nth-child(5) { transition-delay: 0.5s; }
+.experience-item.is-visible ul li:nth-child(6) { transition-delay: 0.55s; }
+/* Add more if needed */
+
+
+/* --- Responsive Adjustments for Timeline --- */
+@media (max-width: 768px) {
+    .experience-item, .education-item {
+        margin-left: 25px; /* Reduce space needed for timeline */
+        padding: 20px 25px;
+    }
+
+    .experience-item::before, .education-item::before {
+        left: -16px; /* Adjust line position */
+        height: calc(100% + 2em); /* Adjust height for smaller margin */
+    }
+     #experience .experience-item:last-of-type::before,
+     #education .education-item:last-of-type::before {
+        height: calc(100% - 10px);
+    }
+
+
+    .experience-item::after, .education-item::after {
+        width: 10px;
+        height: 10px;
+        left: -21px; /* Adjust dot position */
+        top: 10px;
+        border-width: 2px;
+    }
+
+    .experience-item h3, .education-item h3 {
+        font-size: 1.1rem;
+    }
+    .item-meta {
+        font-size: 0.85rem;
+    }
+    .experience-item ul li {
+        font-size: 0.9rem;
+        padding-left: 15px;
+    }
+     .experience-item ul li::before {
+        font-size: 1em;
+        top: 2px;
+    }
+}
+
+@media (max-width: 576px) {
+     /* Optional: Hide timeline completely on very small screens */
+    /* .experience-item::before, .education-item::before,
+    .experience-item::after, .education-item::after {
+        display: none;
+    }
+    .experience-item, .education-item {
+        margin-left: 0;
+        padding-left: 20px;
+        border-left-width: 2px;
+    } */
+
+     .experience-item, .education-item {
+        margin-left: 20px; /* Further reduce space */
+        padding: 15px 20px;
+    }
+     .experience-item::before, .education-item::before {
+        left: -11px;
+     }
+     .experience-item::after, .education-item::after {
+        left: -15px;
+        width: 8px;
+        height: 8px;
+        top: 12px;
+     }
 }
